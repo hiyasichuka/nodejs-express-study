@@ -1,31 +1,21 @@
-let EventEmitter = require("events").EventEmitter;
-let util = require("util");
+const { EROFS } = require("constants");
+let fs = require("fs");
 
-let Animal = function () {
+const data = "hello";
+fs.writeFile("./hello.txt",data,(error)=>{
+  if(error){
+    console.log(error.message);
+  }else{
+    console.log("hello.txt was created.")
+  }
 
-  EventEmitter.call(this);
-};
-
-util.inherits(Animal, EventEmitter);
-
-
-Animal.prototype.message = "qwert";
-
-Animal.prototype.say = function () {
-  console.log(this.message);
-  this.emit("say", this.message);
-};
-
-
-let Dog = function () {
-  Animal.call(this);
-  this.message = "wanwan"
-};
-
-util.inherits(Dog, Animal);
-
-let dog = new Dog();
-dog.on("say", function (message) {
-  console.log(`${message}と叫んだ`);
 });
-dog.say();
+
+fs.readFile("./sample.json","utf-8",(error,data)=>{
+  if(error){
+    console.log(error.message);
+    return;
+  }else{
+    console.log(data);
+  }
+});
