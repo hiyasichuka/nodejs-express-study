@@ -4,26 +4,29 @@
 <head>
   <meta charset="utf-8">
   <script>
-    let timerId = NaN, count = 0;
-    function startTimer() {
-      clearInterval(timerId);
-      timerId = setInterval(tick, 1000);
-    }
-    function stopTimer() {
-      clearInterval(timerId);
-    }
-    function tick() {
-      count++;
-      document.getElementById("counter").textContent = count;
-    }
 
+    function update() {
+      let now = new Date();
+      document.getElementById("year").textContent=now.getFullYear();
+      document.getElementById('month').textContent=(now.getMonth()+1);
+      document.getElementById('date').textContent=now.getDate();
+      document.getElementById('hour').textContent=now.getHours();
+      document.getElementById('min').textContent=now.getMinutes();
+      document.getElementById('sec').textContent=now.getSeconds();
+    }
   </script>
 </head>
 
-<body>
-  <button onclick="startTimer()">Start</button>
-  <button onclick="stopTimer()">Stop</button>
-  <h2 id="counter"></h2>
+<body onload="update()">
+  <p>
+    <span id="year"></span>年
+    <span id="month"></span>月
+    <span id="date"></span>日
+    <span id="hour"></span>時
+    <span id="min"></span>分
+    <span id="sec"></span>秒
+  </p>
+  <button onclick="update()">更新</button>
 </body>
 
 </html>
