@@ -1,21 +1,12 @@
-const { EROFS } = require("constants");
-let fs = require("fs");
+const http = require("http");
 
-const data = "hello";
-fs.writeFile("./hello.txt",data,(error)=>{
-  if(error){
-    console.log(error.message);
-  }else{
-    console.log("hello.txt was created.")
-  }
+const server = http.createServer();
 
+server.on("request", (request, response) => {
+  response.writeHead(200, { "Content-Type": "text/plain" });
+  response.write("Hello World.","utf8");
+  response.end();
 });
 
-fs.readFile("./sample.json","utf-8",(error,data)=>{
-  if(error){
-    console.log(error.message);
-    return;
-  }else{
-    console.log(data);
-  }
-});
+server.listen(3000);
+
