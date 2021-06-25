@@ -8,7 +8,7 @@ app.get("/", function (req, res) {
   const data = {
     items: [
 
-      { name: "takahashi" },
+      { name: "<b>takahashi</b>" },
       { name: "suzuki" },
       { name: "yamamoto" }
     ]
