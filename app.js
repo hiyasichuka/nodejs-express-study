@@ -1,14 +1,19 @@
 var express = require("express");
-var cookieParser = require("cookie-parser");
+var session = require("express-session");
 var app = express();
 
 app.set("view engine", "ejs");
 
-app.use(cookieParser());
+app.use(session({
+  secret: "qwerty",
+  resave: false,
+  saveUninitialized: true,
+  name: "sid"
+}));
 
 app.get("/", (req, res) => {
-  var count = parseInt(req.cookies.count || 0);
-  res.cookie("count", count + 1);
+  let count = req.session.count || 0;
+  req.session.count++;
   res.render("./index.ejs", { count });
 });
 
