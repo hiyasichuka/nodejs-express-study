@@ -1,9 +1,10 @@
 var express = require("express");
 var app = express();
 
-app.get("/user/:id?", (req, res) => {
-  res.status(200).send("OK");
-  console.log(req.params.id);
-});
+// app.get("/user/:id", (req, res) => {
+//   res.status(200).send("OK");
+// });
 
-app.listen(3000);
+app.use("/user",require("./router/user.js"));
+
+app.listen(8080);
