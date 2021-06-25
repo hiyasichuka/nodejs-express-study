@@ -1,10 +1,11 @@
 var express = require("express");
 var app = express();
 
-// app.get("/user/:id", (req, res) => {
-//   res.status(200).send("OK");
-// });
+app.set("view engine","jade");
 
-app.use("/user",require("./router/user.js"));
+app.get("/",(req,res)=>{
+  res.status(200).render("index.jade",{title: "WEB App"});
+});
+
 
 app.listen(8080);
