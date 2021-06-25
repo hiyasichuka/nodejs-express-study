@@ -1,10 +1,9 @@
 var express = require("express");
 var app = express();
 
-app.use(require("./lib/logger.js"));
-
-app.get("/", (req, res) => {
-  res.status(200).send("Hello World.");
+app.get("/user/:id?", (req, res) => {
+  res.status(200).send("OK");
+  console.log(req.params.id);
 });
 
 app.listen(3000);
