@@ -1,11 +1,20 @@
 <!DOCTYPE html>
 <html>
-
-<head>
-  <meta charset="UTF-8">
-  <title>Title</title>
-</head>
-<body>
-  <%- include("./item.ejs",items) %>
-</body>
+  <head>
+    <meta charset="utf-8">
+    <title>Request</title>
+  </head>
+  <body>
+    <h1>Hello Node.js</h1>
+    <p>how to request</p>
+    <form method="POST" action="/">
+    <div>
+      <input type="text" id="frm_text" name="frm_text"/>
+      <input type="checkbox" id="frm_chkbx" name="frm_chkbk"/>
+    </div>
+    <div>
+      <input type="submit"/>
+    </div>
+    </form>
+  </body>
 </html>
