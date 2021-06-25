@@ -1,10 +1,19 @@
 var express = require("express");
 var app = express();
 
-app.set("view engine","ejs");
+app.set("view engine", "ejs");
 
-app.get("/",(req,res)=>{
-  res.status(200).render("index.ejs",{title: "WEB App"});
+app.get("/", function (req, res) {
+
+  const data = {
+    items: [
+
+      { name: "takahashi" },
+      { name: "suzuki" },
+      { name: "yamamoto" }
+    ]
+  };
+  res.render("./index.ejs", data);
 });
 
 

@@ -1,13 +1,18 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-  </head>
-  <body>
-    <h1>
-      <%= title  %>
-    </h1>
-    <p>Node.js app ejs</p>
-  </body>
+
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+
+<body>
+  <ul>
+    <% for (let item of items){ %>
+      <li>
+        <%= item.name %>
+      </li>
+      <% } %>
+  </ul>
+</body>
 </html>
