@@ -1,6 +1,7 @@
+var systemlogger = require("./lib/log/systemlogger.js");
 var express = require("express"),
   app = express();
-logger = require("./lib/logger.js").console;
+logger = require("./lib/log/logger.js").console;
 
 app.set("view engine", "ejs");
 
@@ -12,9 +13,8 @@ app.use("/public", express.static(__dirname + "/public/" + process.env.NODE_ENV 
 // ルート設定
 app.use("/", require("./routes/index.js"));
 
-app.get("/", (req, res) => {
-  res.render("./index.ejs");
-});
+// systemloggerを利用
+app.use(systemlogger());
 
 app.listen(8080);
 
