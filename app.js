@@ -13,8 +13,14 @@ app.use("/public", express.static(__dirname + "/public/" + process.env.NODE_ENV 
 // ルート設定
 app.use("/", require("./routes/index.js"));
 
-// systemloggerを利用
+// systemLoggerを利用
 app.use(systemlogger());
+
+// applicationLoggerを利用
+var appLogger = require("./lib/log/logger.js").application;
+appLogger.addContext("key", "test");
+appLogger.error("error sample massage");
+//
 
 app.listen(8080);
 
