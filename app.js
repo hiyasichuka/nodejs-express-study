@@ -1,5 +1,6 @@
 var express = require("express"),
   app = express();
+logger = require("./lib/logger.js").console;
 
 app.set("view engine", "ejs");
 
@@ -16,4 +17,5 @@ app.get("/", (req, res) => {
 });
 
 app.listen(8080);
-console.log(process.env.NODE_ENV);
+
+logger.info("START " + process.env.NODE_ENV);
