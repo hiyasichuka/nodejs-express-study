@@ -1,9 +1,11 @@
 var express = require("express"),
-    app = express();
+  app = express();
 
-app.set("view engine","ejs");
+app.set("view engine", "ejs");
 
-app.get("/",(req,res)=>{
+app.disable("x-powered-by");
+
+app.get("/", (req, res) => {
   res.render("./index.ejs");
 });
 
