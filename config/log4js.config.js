@@ -9,7 +9,7 @@ module.exports = {
     FileLogAppender: {
       type: "file",
       filename: path.join(ROOT + "./log/system.log"),
-      maxLogSize: 500000,
+      maxLogSize: 1,
       backups: 10
     }
   },
