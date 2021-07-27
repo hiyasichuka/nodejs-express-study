@@ -1,7 +1,9 @@
 var systemlogger = require("./lib/log/systemlogger.js");
+var consoleLogger = require("./lib/log/logger.js").console;
+var appLogger = require("./lib/log/logger.js").application;
+
 var express = require("express"),
   app = express();
-logger = require("./lib/log/logger.js").console;
 
 app.set("view engine", "ejs");
 
@@ -17,11 +19,13 @@ app.use("/", require("./routes/index.js"));
 app.use(systemlogger());
 
 // applicationLoggerを利用
-var appLogger = require("./lib/log/logger.js").application;
 appLogger.addContext("key", "test");
 appLogger.error("error sample massage");
 //
 
+// 接続待ち
 app.listen(8080);
 
-logger.info("START " + process.env.NODE_ENV);
+// consoleLoggerを利用
+consoleLogger.info("START " + process.env.NODE_ENV);
+//
